@@ -15,7 +15,8 @@ namespace Acme.BookStore.EntityFrameworkCore
             builder.Entity<Book>(b =>
             {
                 b.ToTable("Books");
-                 //auto configure for the base class props
+                b.ConfigureByConvention();
+                //auto configure for the base class props
                 //...
             });
            
