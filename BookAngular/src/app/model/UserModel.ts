@@ -1,6 +1,6 @@
 export class UserModel{
     token : string;
-    expiration: string;
+    expiration: Date;
     userName: string;
     password: string
 }

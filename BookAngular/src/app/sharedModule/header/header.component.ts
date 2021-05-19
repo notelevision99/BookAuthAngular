@@ -13,7 +13,7 @@ import { AuthenticateService } from 'src/app/services/authenticate.service';
     constructor(private authenticateServices : AuthenticateService,
       private router : Router
       ) {
-      this.authenticateServices.currentUser.subscribe((user : UserModel) => {this.currentUser = user;console.log(this.currentUser)})
+      this.authenticateServices.currentUser.subscribe((user : UserModel) => {this.currentUser = user})
     };
 
     ngOnInit() {

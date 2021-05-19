@@ -49,14 +49,14 @@ namespace Acme.BookStore.NewFolder
             var token = new JwtSecurityToken(
                 issuer: validIssuer,
                 audience: validAudience,
-                expires: DateTime.Now.AddHours(7.01),
+                expires: DateTime.Now.AddHours(0.01),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
             return new LoginResponse
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = token.ValidTo.ToString(),
+                Expiration = token.ValidTo,
                 UserName = user.UserName,
                 Email = user.Email
             };

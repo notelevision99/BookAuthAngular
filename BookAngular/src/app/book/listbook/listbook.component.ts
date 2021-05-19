@@ -84,6 +84,7 @@ import { BookServiceService } from '../../services/book-service.service';
       this.searchString = searchText;
       this.loadBooks(this.searchString);
     }
+   
 
     public loadBooks(searchString?: string) {
       var getBookCallback;

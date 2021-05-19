@@ -154,6 +154,8 @@ namespace Acme.BookStore
                         ValidAudience = "http://localhost:61955",
                         ValidIssuer = "https://localhost:44313",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM")),
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
                     };
                 });
         }
@@ -232,12 +234,12 @@ namespace Acme.BookStore
             {
                 app.UseErrorPage();
             }
-
+            app.UseAuthentication();
             app.UseCorrelationId();
             app.UseStaticFiles();
             app.UseRouting();
             app.UseCors(DefaultCorsPolicyName);
-            app.UseAuthentication();
+        
            // app.UseJwtTokenMiddleware();
 
             if (MultiTenancyConsts.IsEnabled)

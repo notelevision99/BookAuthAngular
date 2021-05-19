@@ -16,8 +16,31 @@ import { AuthenticateService } from './services/authenticate.service';
     ) {
       this.authenticateService.currentUser.subscribe((user : UserModel) => {this.currentUser = user}
       );
+      this.expiredToken();
     }
     
-
+    expiredToken() {
+      var token = JSON.parse(localStorage.getItem('currentUser')) 
+      if(token)
+      {
+        var tokenDateTime = token.expiration
+        var dateCompare = new Date();
+        var dateTimeNow = dateCompare.toISOString();
+       // (dateTimeNow < tokenDateTime) ? "" :  (localStorage.removeItem('currentUser'),this.reloadCurrentRoute());  
+       if(dateTimeNow < tokenDateTime){
+        console.log(true)
+       } 
+       else{
+        localStorage.removeItem('currentUser');
+        this.reloadCurrentRoute();
+       }  
+      }
+    }
+    reloadCurrentRoute() {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['/book']);
+        console.log("reload")
+      });
+    }
     title = 'BookStore';
   }
