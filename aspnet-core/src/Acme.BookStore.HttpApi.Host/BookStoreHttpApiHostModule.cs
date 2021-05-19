@@ -153,7 +153,7 @@ namespace Acme.BookStore
                         ValidateAudience = true,
                         ValidAudience = "http://localhost:61955",
                         ValidIssuer = "https://localhost:44313",
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM"))
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM")),
                     };
                 });
         }

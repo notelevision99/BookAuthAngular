@@ -29,7 +29,6 @@ namespace Acme.BookStore.NewFolder
         {
             throw new NotImplementedException();
         }
-
         
         public async Task<LoginResponse> Login(LoginDto model)
         {
@@ -50,14 +49,16 @@ namespace Acme.BookStore.NewFolder
             var token = new JwtSecurityToken(
                 issuer: validIssuer,
                 audience: validAudience,
-                expires: DateTime.Now.AddHours(3),
+                expires: DateTime.Now.AddHours(7.01),
                 claims: authClaims,
                 signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
                 );
             return new LoginResponse
             {
                 Token = new JwtSecurityTokenHandler().WriteToken(token),
-                Expiration = token.ValidTo.ToString()
+                Expiration = token.ValidTo.ToString(),
+                UserName = user.UserName,
+                Email = user.Email
             };
         }
     }
